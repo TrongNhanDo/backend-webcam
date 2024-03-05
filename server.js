@@ -9,13 +9,13 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   const stopCapture = (data) => {
-    socket.emit("stopCaptureCommand", {
-      departmentId: data.departmentId,
+    io.sockets.emit("stopCaptureCommand", {
+      data,
     });
   };
 
   socket.on("sendImage", (data) => {
-    socket.emit("receiveImage", data);
+    io.sockets.emit("receiveImage", data);
   });
 
   socket.on("stopCapture", (data) => {
