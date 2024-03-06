@@ -12,12 +12,17 @@ io.on("connection", (socket) => {
     io.sockets.emit("stopCaptureCommand", data);
   };
 
+  const sendLatestId = (data) => {
+    io.sockets.emit("latestId", data);
+  };
+
   socket.on("sendImage", (data) => {
     io.sockets.emit("receiveImage", data);
   });
 
   socket.on("stopCapture", (data) => {
     stopCapture(data);
+    sendLatestId(data);
   });
 });
 
