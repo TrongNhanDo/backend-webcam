@@ -9,9 +9,7 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   const stopCapture = (data) => {
-    io.sockets.emit("stopCaptureCommand", {
-      data,
-    });
+    io.sockets.emit("stopCaptureCommand", data);
   };
 
   socket.on("sendImage", (data) => {
