@@ -19,6 +19,10 @@ io.on("connection", (socket) => {
   socket.on("stopCapture", (data) => {
     stopCapture(data);
   });
+
+  socket.on("stopCaptureDone", (data) => {
+    io.sockets.emit("disabledCapture", data);
+  });
 });
 
 app.get("/", (req, res) => {
