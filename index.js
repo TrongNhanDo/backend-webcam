@@ -23,6 +23,10 @@ io.on("connection", (socket) => {
   socket.on("stopCaptureDone", (data) => {
     io.sockets.emit("disabledCapture", data);
   });
+
+  socket.on("sendDepartmentList", (data) => {
+    io.sockets.emit("receiveDepartmentList", data);
+  });
 });
 
 app.get("/", (req, res) => {
